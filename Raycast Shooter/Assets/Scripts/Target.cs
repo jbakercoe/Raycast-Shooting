@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Target : MonoBehaviour {
 
     public float health = 50f;
+
+    [SerializeField] GameObject crackedObject;
 
     public void TakeDamage(float amount)
     {
@@ -15,7 +18,9 @@ public class Target : MonoBehaviour {
 
     void Die()
     {
+        Instantiate(crackedObject, transform.position, transform.rotation);
         Destroy(gameObject);
     }
+    
 
 }

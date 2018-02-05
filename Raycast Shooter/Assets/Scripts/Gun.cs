@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour {
     public float range = 100f;
 
     private float fireRate = 15f;
-    private float impactForce = 90f;
+    private float impactForce = 30f;
     private float nextTimeToFire = 0f;
 
     [SerializeField] Camera fpsCamera;
@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour {
             }
 
             ParticleSystem impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGO.gameObject, 2f);
+            Destroy(impactGO.gameObject, .7f);
         }
     }
 
