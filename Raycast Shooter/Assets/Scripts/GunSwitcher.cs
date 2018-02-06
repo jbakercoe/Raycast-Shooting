@@ -5,11 +5,12 @@ using UnityEngine;
 public class GunSwitcher : MonoBehaviour {
 
     private int selectedWeapon = 0;
+    private Animator anim;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        SelectWeapon();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,7 +19,8 @@ public class GunSwitcher : MonoBehaviour {
             if (selectedWeapon < transform.childCount - 1)
             {
                 selectedWeapon++;
-                SelectWeapon();
+                anim.GetComponent<Animator>().SetTrigger("Change");
+                //SelectWeapon();
             }
         }
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
@@ -26,12 +28,13 @@ public class GunSwitcher : MonoBehaviour {
             if(selectedWeapon > 0)
             {
                 selectedWeapon--;
-                SelectWeapon();
+                anim.GetComponent<Animator>().SetTrigger("Change");
+                //SelectWeapon();
             }
         }
 	}
 
-    void SelectWeapon()
+    public void SelectWeapon()
     {
         int i = 0;
         foreach(Transform weapon in transform)
@@ -39,6 +42,8 @@ public class GunSwitcher : MonoBehaviour {
             if(i == selectedWeapon)
             {
                 weapon.gameObject.SetActive(true);
+                anim = weapon.GetComponent<Animator>();
+                anim.SetTrigger("Start");
             } else
             {
                 weapon.gameObject.SetActive(false);

@@ -48,4 +48,9 @@ public class Gun : MonoBehaviour {
         }
     }
 
+    public void SwapGun()
+    {
+        transform.parent.GetComponent<GunSwitcher>().SelectWeapon();
+    }
+
 }
