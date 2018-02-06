@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour {
             }
 
             ParticleSystem impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGO.gameObject, .7f);
+            Destroy(impactGO.gameObject, 1.2f);
         }
     }
 
